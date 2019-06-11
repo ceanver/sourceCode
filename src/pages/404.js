@@ -1,16 +1,16 @@
 import React from "react"
-import Layout from "../mesh/Layout"
+import Layout from "../incl/Layout"
 import styles from "../css/error.module.css"
-import { Link } from "gatsby"
-import Banner from "../mesh/Banner"
+import AniLink from "gatsby-plugin-transition-link/AniLink"
+import Banner from "../incl/Banner"
 export default function error() {
   return (
     <Layout>
       <header className={styles.error}>
         <Banner title="Dynamic recompilation">
-          <Link to="/" className="btn-white">
+          <AniLink fade to="/" className="btn-white">
             Back to home page
-          </Link>
+          </AniLink>
         </Banner>
       </header>
     </Layout>

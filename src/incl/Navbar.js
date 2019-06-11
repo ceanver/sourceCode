@@ -1,10 +1,10 @@
 import React, { useState } from "react" //useState hook
-import { Link } from "gatsby"
+import AniLink from "gatsby-plugin-transition-link/AniLink"
 import styles from "../css/navbar.module.css" //import css
 import { FaAlignRight } from "react-icons/fa" //import font-awesome icon
-import links from "../topo/links" //import links
-import socialIcons from "../topo/socialIcons" //import social icons
-import logo from "../vtk/logo.svg" //import logo image
+import links from "../doc/links" //import links
+import socialIcons from "../doc/socialIcons" //import social icons
+import logo from "../ico/logo.svg" //import logo image
 const Navbar = () => {
   const [isOpen, setNav] = useState(false) //useState hook for toggling
   const toggleNav = () => {
@@ -28,7 +28,9 @@ const Navbar = () => {
           {links.map((item, index) => {
             return (
               <li key={index}>
-                <Link to={item.path}>{item.text}</Link>
+                <AniLink fade to={item.path}>
+                  {item.text}
+                </AniLink>
               </li>
             )
           })}

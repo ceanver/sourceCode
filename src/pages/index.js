@@ -1,21 +1,35 @@
 import React from "react"
-import { Link } from "gatsby"
-import Layout from "../mesh/Layout"
-import Hero from "../mesh/Hero"
-import Banner from "../mesh/Banner"
-import About from "../mesh/Home/About"
-import Skills from "../mesh/Home/Skills"
+import AniLink from "gatsby-plugin-transition-link/AniLink"
+import Layout from "../incl/Layout"
+import Banner from "../incl/Banner"
+import About from "../incl/Home/About"
+import Skills from "../incl/Home/Skills"
 
-export default () => (
+import Hero from "../incl/Hero"
+import { graphql } from "gatsby"
+
+export default ({ data }) => (
   <Layout>
-    <Hero>
+    <Hero home="true" img={data.homeHero.childImageSharp.fluid}>
       <Banner title="Cecil Vega" info="Data, engineering and learning in Chile">
-        <Link to="/projects" className="btn-white">
+        <AniLink fade to="/projects" className="btn-white">
           Explore Projects
-        </Link>
+        </AniLink>
       </Banner>
     </Hero>
     <About />
     <Skills />
   </Layout>
 )
+
+export const query = graphql`
+  query {
+    homeHero: file(relativePath: { eq: "homeHero.jpg" }) {
+      childImageSharp {
+        fluid(quality: 90, maxWidth: 4160) {
+          ...GatsbyImageSharpFluid_withWebp
+        }
+      }
+    }
+  }
+`

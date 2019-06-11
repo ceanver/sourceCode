@@ -1,17 +1,18 @@
 import React from "react"
 import styles from "../css/footer.module.css"
-import links from "../topo/links"
-import socialIcons from "../topo/socialIcons"
-import { Link } from "gatsby"
+import links from "../doc/links"
+import AniLink from "gatsby-plugin-transition-link/AniLink"
+import socialIcons from "../doc/socialIcons"
+
 const Footer = () => {
   return (
     <footer className={styles.footer}>
       <div className={styles.links}>
         {links.map((item, index) => {
           return (
-            <Link key={index} to={item.path}>
+            <AniLink fade key={index} to={item.path}>
               {item.text}
-            </Link>
+            </AniLink>
           )
         })}
       </div>

@@ -6,6 +6,15 @@
 
 module.exports = {
   /* Your site config here */
+  siteMetadata: {
+    title: "ceanver",
+    description: "Data, engineering and learning in Chile.",
+    author: "@Cecil Vega",
+    data: {
+      love: "Tandrea",
+      age: "25",
+    },
+  },
   plugins: [
     {
       resolve: `gatsby-plugin-manifest`,
@@ -25,5 +34,15 @@ module.exports = {
         // Add any options here
       },
     },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `ico`,
+        path: `${__dirname}/src/ico/`,
+      },
+    },
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
+    `gatsby-plugin-transition-link`,
   ],
 }

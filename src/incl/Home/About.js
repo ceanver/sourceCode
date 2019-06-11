@@ -1,16 +1,32 @@
 import React from "react"
 import Title from "../Title"
 import styles from "../../css/about.module.css"
-import selfie from "../../vtk/cecil.jpeg"
+// import selfie from "../../vtk/cecil.jpeg" Default way but done with queries fluid which is much faster.
+import { useStaticQuery, graphql } from "gatsby"
+import Img from "gatsby-image"
+
+const getSelfie = graphql`
+  query selfie {
+    selfie: file(relativePath: { eq: "cecil.jpeg" }) {
+      childImageSharp {
+        fluid(maxWidth: 600) {
+          ...GatsbyImageSharpFluid_tracedSVG
+        }
+      }
+    }
+  }
+`
 
 const About = () => {
+  const { selfie } = useStaticQuery(getSelfie)
   return (
     <section className={styles.about}>
       <Title title="about" subtitle="me" />
       <div className={styles.aboutCenter}>
         <article className={styles.aboutImg}>
           <div className={styles.imgContainer}>
-            <img src={selfie} alt="about company" />
+            {/* <img src={selfie} alt="about company" /> */}
+            <Img fluid={selfie.childImageSharp.fluid} alt="In Wall of China" />
           </div>
         </article>
         <article className={styles.aboutInfo}>

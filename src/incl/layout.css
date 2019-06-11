@@ -39,14 +39,14 @@ h6 {
 p {
   margin-bottom: 1.25rem;
 }
-.defaultHero {
+/* .defaultHero {
   min-height: calc(100vh - 62px);
   background: linear-gradient(rgba(63, 208, 212, 0.7), rgba(0, 0, 0, 0.7)),
-    url("../vtk/defaultBcg.jpg") center/cover no-repeat;
+    url("../vtk/homeHero.jpg") center/cover no-repeat;
   display: flex;
   justify-content: center;
   align-items: center;
-}
+} */
 .btn-white,
 .btn-primary {
   text-transform: uppercase;
